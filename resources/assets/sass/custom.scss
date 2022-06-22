@@ -1,0 +1,310 @@
+/*
+ * Title:   Custom Style File
+ * Author:  http://themeforest.net/user/soaptheme 
+ */
+
+.ui-datepicker {
+  select {
+    background-color: $heading-color;
+  }
+
+  .ui-datepicker-prev:before {
+    border-right: none;
+  }
+
+  .ui-datepicker-next:before {
+    border-left: none;
+  }
+
+  .ui-datepicker-title select.ui-datepicker-year {
+    width: 50%
+  }
+}
+
+form.form-horizontal .checkbox {
+  padding-top: 0
+}
+
+
+form .form-group {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.tab-container .tab-content .tab-pane .form-group {
+  .row {
+    margin-bottom: 0;
+  }
+}
+
+.form-group {
+  textarea.form-control {
+    min-height: 350px;
+  }
+}
+
+div.large-block {
+  margin-bottom: 50px
+}
+
+ul.multi {
+  padding-left: 20px;
+}
+
+ul.side-category-menu ul {
+  padding-left: 15px;
+
+  li:last-child {
+    border-bottom: none
+  }
+}
+
+.checkbox label, div.radio label {
+  padding-left: 0;
+}
+
+.ajax.loading {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: url("../img/loading.gif") center no-repeat;
+  background-size: contain;
+}
+
+.field .ui.dropdown {
+  width: 180px;
+  background: #f5f5f5;
+  padding: 5px 10px 5px 10px;
+  span {
+    font-size: .8rem;
+  }
+  .glyphicon {
+    font-size: .5em;
+  }
+  > .dropdown.icon, .item .glyphicon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  .item .glyphicon {
+    top: 21px;
+  }
+}
+
+.details {
+  p, span {
+    font-size: .7rem
+  }
+}
+
+.container .post-content {
+  p {
+    font-size: .8rem;
+  }
+
+  .entry-title {
+    font-size: 1rem;
+  }
+
+  figure.image-container {
+    max-height: none;
+    overflow: hidden
+  }
+
+  .post {
+    height: 320px
+  }
+}
+
+ul.category-menu {
+  list-style: none;
+  padding: 0;
+
+  .inner {
+    padding-left: 1em;
+    overflow: hidden;
+    display: none;
+
+    &.shown {
+      /*display: block;*/
+    }
+  }
+
+  li {
+    margin: 0;
+    a {
+      font-size: .7rem
+    }
+    a.toggle {
+      padding: 0 0 0 .5rem;
+      transition: background .3s ease;
+      cursor: pointer
+    }
+  }
+}
+
+#main-menu ul.menu, .chaser ul.menu {
+  margin: 0 0 0 40px;
+  float: left;
+}
+
+#main-menu ul.menu > li ul li > a {
+  white-space: normal;
+  word-break: break-word;
+}
+
+ul.categories-filter.check.category-menu li {
+
+  &:before {
+    background: transparent;
+    color: $primary-color;
+  }
+  &.active {
+    &:before, > a {
+      color: $button-color;
+    }
+  }
+}
+
+.search-list .image-box .box {
+  height: 545px;
+  background: transparent;
+  > .details {
+    background: #fff
+  }
+  figure {
+    max-height: 270px;
+    overflow: hidden
+  }
+}
+
+.search-box-wrapper {
+  margin-top: 100px
+}
+
+.section.global-map-area {
+  background: #2d3e52;
+  background-image: url("/images/zenbg-1.png"), url("/images/zenbg-2.png");
+  background-repeat: repeat-x, repeat;
+}
+
+.memberCategory.ui.button.dropdown {
+  .item .text {
+    word-break: break-word;
+    white-space: normal;
+  }
+  .menu {
+    min-width: 245px
+  }
+}
+
+.page-title, .home-title {
+  color: $skin-bg-color
+}
+
+.minmax-input {
+  width: 100px;
+}
+
+.bottom15 {
+  margin-bottom: 15px;
+}
+
+.modal {
+  overflow: visible;
+}
+
+section#content {
+  padding-top: 20px
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  opacity: .5;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+  opacity: .5;
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+  opacity: .5;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  opacity: .5;
+}
+
+.tabs-links li {
+  margin-bottom: 8px;
+}
+
+.dropdown-countryCode {
+  margin-bottom: 10px
+}
+
+#social-media .box-title {
+  word-break: break-all;
+}
+
+.work-box {
+  img {
+    display: block;
+    width: 250px;
+    height: auto;
+  }
+
+  min-height: 320px;
+}
+
+.table-center {
+
+  td, th {
+    padding: 8px;
+    text-align: left;
+  }
+
+  width: 350px;
+  margin: 0 auto 30px auto;
+  font-size: 1rem;
+}
+
+article .box-title {
+  word-break: break-word;
+}
+
+.popular-post {
+  min-height: 310px
+}
+
+.pad-center {
+  padding: 80px 0;
+}
+
+@media (min-width: 320px) {
+  .sticky-ads {
+    max-height: 100px;
+  }
+  .box-info {
+    min-height: 405px
+  }
+}
+
+@media (min-width: 480px) {
+  .box-info {
+    min-height: 270px
+  }
+}
+
+@media (min-width: 768px) {
+  .box-info {
+    min-height: 260px
+  }
+
+  .container .post-content {
+    figure.image-container {
+      max-height: 165px;
+    }
+  }
+}

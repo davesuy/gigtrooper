@@ -1,0 +1,57 @@
+/*
+ * Title:   Travelo | Icon Font Style File
+ * Author:  http://themeforest.net/user/soaptheme 
+ */
+
+@import 'mixin';
+
+/* Icons */
+@font-face {
+  font-family: 'soap-icons';
+  src: url('../fonts/soap-icons.eot?26664784');
+  src: url('../fonts/soap-icons.eot?26664784#iefix') format('embedded-opentype'),
+       url('../fonts/soap-icons.woff?26664784') format('woff'),
+       url('../fonts/soap-icons.ttf?26664784') format('truetype'),
+       url('../fonts/soap-icons.svg?26664784#soap-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'soap-icons';
+    src: url('../font/soap-icons.svg?26664784#soap-icons') format('svg');
+  }
+}
+*/
+ 
+[class^="soap-icon"], [class*=" soap-icon"] {
+  vertical-align: baseline;
+  &:before {
+    font-family: "soap-icons"; font-style: normal; font-weight: normal; speak: none; display: inline-block; text-decoration: inherit; text-align: center;
+    font-variant: normal; text-transform: none;
+    line-height: 1em;
+   
+    /* you can be more comfortable with increased icons size */
+    /*font-size: 120%;*/
+  }
+}
+[class^="soap-icon"], [class*=" soap-icon"], .glyphicon {
+  &.circle { border: 1px solid; width: 1.8em; height: 1.8em; line-height: 1.7333em; @include border-radius(50%, 50%, 50%, 50%); display: inline-block; text-align: center; }
+  &.takeoff-effect:before { @include transform(rotate(-25deg)); }
+  &.takeoff-effect1:before { @include transform(rotate(25deg)); }
+  &.landing-effect:before { @include transform(rotate(-25deg)); }
+  &.flip-effect:before { @include transform(scaleX(-1)); filter: FlipH; }
+}
+
+.soap-icon-twitter:before { content: '\e8a8'; }
+.soap-icon-instagram:before { content: '\e8b5'; }
+.soap-icon-facebook:before { content: '\e8a0'; }
+.soap-icon-youtube:before { content: '\e8ab'; }
+.soap-icon-linkedin:before { content: '\e8b0'; }
+.soap-icon-longarrow-left:before { content: '\e88a'; }
+.soap-icon-longarrow-right:before { content: '\e88b'; }
+.soap-icon-user:before { content: '\e8b7'; }
+.soap-icon-message:before { content: '\e85f'; }

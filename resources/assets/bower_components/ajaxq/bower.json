@@ -1,0 +1,33 @@
+{
+  "name": "ajaxq",
+  "main": "ajaxq.js",
+  "version": "0.0.6",
+  "homepage": "foliotek.github.io/AjaxQ",
+  "authors": [
+    "Dustin Smith <thedustinsmith@gmail.com>",
+    "Brian Grinstead <briangrinstead@gmail.com>"
+  ],
+  "description": "A jQuery plugin to perform sequential ajax requests.",
+  "keywords": [
+    "ajaxq",
+    "ajax",
+    "queue"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "test",
+    "demo",
+    "index.html"
+  ],
+  "dependencies": {
+    "jquery": ">1.6"
+  },
+  "devDependencies": {
+    "chai": "~3.3.0",
+    "mocha": "~2.3.3",
+    "sinon-1.17.0": "http://sinonjs.org/releases/sinon-1.17.0.js",
+    "chai-spies": "~0.7.1"
+  }
+}

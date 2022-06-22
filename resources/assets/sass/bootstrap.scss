@@ -1,0 +1,190 @@
+// Bootstrap
+//
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+
+@import "bootstrap-sass/mixins";
+
+@import "bootstrap-sass/scaffolding";
+@import "bootstrap-sass/grid";
+
+// [converter] extracted from `.form-inline` for libsass compatibility
+@mixin form-inline {
+
+  // Kick in the inline
+  @media (min-width: $screen-sm-min) {
+    // Inline-block all the things for "inline"
+    .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    // In navbar-form, allow folks to *not* use `.form-group`
+    .form-control {
+      display: inline-block;
+      width: auto; // Prevent labels from stacking above inputs in `.form-group`
+      vertical-align: middle;
+    }
+
+    // Make static controls behave like regular ones
+    .form-control-static {
+      display: inline-block;
+    }
+
+    .input-group {
+      display: inline-table;
+      vertical-align: middle;
+
+      .input-group-addon,
+      .input-group-btn,
+      .form-control {
+        width: auto;
+      }
+    }
+
+    // Input groups need that 100% width though
+    .input-group > .form-control {
+      width: 100%;
+    }
+
+    .control-label {
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    // Remove default margin on radios/checkboxes that were used for stacking, and
+    // then undo the floating of radios and checkboxes to match.
+    .radio,
+    .checkbox {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+      vertical-align: middle;
+
+      label {
+        padding-left: 0;
+      }
+    }
+    .radio input[type="radio"],
+    .checkbox input[type="checkbox"] {
+      position: relative;
+      margin-left: 0;
+    }
+
+    // Re-override the feedback icon.
+    .has-feedback .form-control-feedback {
+      top: 0;
+    }
+  }
+}
+
+// [converter] extracted as `@mixin form-inline` for libsass compatibility
+.form-inline {
+  @include form-inline;
+}
+
+@import "bootstrap-sass/navbar";
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=4.0.3');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=4.0.3') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.0.3') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+ ol, ul {
+   margin: 0;
+   list-style-type: none;
+ }
+
+ .pull-left {
+   float: left;
+ }
+
+ .pull-right {
+   float: right
+ }
+
+@import 'soap-icon2';
+@import 'style2';
+@import 'responsive2';
+html { font-size: 19px; min-height: 100%; }
+body { font:75%/150% $font-stack; background-color: #fff; color:$primary-color; overflow-x: hidden; -webkit-font-smoothing: antialiased; -ms-overflow-style: scrollbar; oveflow-y: scroll; }
+a {
+  color: inherit;
+}
+.logo amp-img { width: 160px; height: 37px; }
+
+a.button {
+  border: none; color: #fff; cursor: pointer; padding: 0 15px; white-space: nowrap;
+  &.btn-large { padding: 0 32px; height: 43px; font-size: 1.1667em; line-height: 43px; }
+  &.btn-medium { padding: 0 32px; height: 34px; line-height: 34px; font-size: 1em; }
+  &.btn-small { height: 28px; padding: 0 24px; line-height: 28px; font-size: 0.9167em; }
+  &.btn-mini { height: 19px; padding: 0 20px; font-size: 0.8333em; line-height: 19px; }
+  &.full-width { padding-left: 0; padding-right: 0; width: 100% }
+}
+
+.page-title-container {
+  .page-title .entry-title {
+    color: #fff;
+    line-height: 56px;
+  }
+  height: 56px;
+  background: $heading-color;
+}
+
+h1, h2, h3, h4, h5, h6 { margin:0 0 15px; font-weight:normal; color: $heading-color; }
+h1 { font-size: 2em; line-height:1.25em; /*24px, 30px*/ }
+h2 { font-size: 1.6667em;      line-height:1.25em; /*20px, 35px*/ }
+h3 { font-size: 1.5em; line-height:1.2222em; /*18px, 22px*/ }
+h4 { font-size: 1.3333em; line-height:1.25em; /*16px, 20px*/ }
+h5 { font-size: 1.1666em; line-height:1.1428em; /*14px, 16px*/ }
+h6 { font-size: 1em; }
+
+.image-box, .box-title {
+  color: $heading-color;
+  margin-bottom: 10px;
+}
+.image-box .box amp-img {
+  width: 100%;
+  height: auto;
+}
+
+.single .post .details {
+  background: #fff;
+  padding: 20px 20px 10px;
+}
+
+.travelo-box {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+ul.check li:before {
+  content: "\e8ba";
+  margin-right: 10px;
+  color: #98ce44;
+  font-family: "soap-icons";
+  font-size: 1.3333em;
+  line-height: 1em;
+}
+
+ul.category-menu {
+  padding: 0;
+}
+
+.filters-container ul.categories-filter li {
+  padding: 0;
+  background: none;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.text-center {
+  text-align: center;
+}
+
+ul.check {
+  line-height: 2em;
+}

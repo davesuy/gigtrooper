@@ -1,0 +1,601 @@
+@import 'variables';
+@import 'mixin';
+
+
+/* font */
+@font-face {
+  font-family: 'NexaBlack';
+  src: url('../fonts/NexaBlack.eot?') format('eot'), 
+       url('../fonts/NexaBlack.otf')  format('opentype'),
+       url('../fonts/NexaBlack.woff') format('woff'), 
+       url('../fonts/NexaBlack.ttf')  format('truetype'),
+       url('../fonts/NexaBlack.svg#NexaBlack') format('svg');
+}
+
+/* 1.2. Layout ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+section#content {
+  min-height: 400px; padding-top: 40px; text-align: left; background: #f5f5f5;
+  &:after { display: table; content: ""; clear: both; }
+}
+.box { margin-bottom: 30px; }
+.large-block { margin-bottom: 70px; }
+article { margin-bottom: 20px; }
+#main { margin-bottom: 40px; }
+
+/* 2. Global Styles ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.image-container amp-img { max-width: 100%; }
+/* box title */
+.box-title {
+  margin-bottom: 0; line-height: 1em;
+  small {
+    font-size: 10px; color: $primary-color; text-transform: uppercase; display: block; margin-top: 4px; /*letter-spacing: normal;*/
+    [class^="soap-icon"] { color: $yellow-theme-color; font-size: 1.3333em; }
+  }
+}
+h2.box-title small { font-size: 11px; }
+h1.box-title small { font-size: 12px; }
+
+/* Fourty space */
+.box-title, .post-title, .post-meta, .author .name, .mile, .title, .s-title, .price, button, input[type="button"].button, a.button, dl, label, span.info, .price-wrapper, ul.tabs a, .icon-box.style1, .icon-box.style2, .icon-box.style3 .description, .icon-box.style5, .search-results-title, .breadcrumbs { 
+  letter-spacing: 0.04em;
+}
+
+a.button {
+  display: inline-block; background: #d9d9d9; font-size: 0.8333em; line-height: 1.8333em; white-space: nowrap; text-align: center;
+  &:hover { background: $green-theme-color; }
+  &.btn-mini { padding-left: 10px; padding-right: 10px; }
+  &.btn-large, &.btn-medium, &.btn-small, &.full-width { font-weight: bold; }
+}
+
+/* 2.2.6. Blockquote */
+q, blockquote { quotes: '\201C' '\201D' '\2018' '\2019'; }
+
+blockquote {
+  font-size: 1.3333em; line-height: 1.6em; padding: 20px 20px 20px 40px; border-left: none; position: relative; text-indent: -19px;
+  p { font-size: 1em; }
+  &:before, &:after { font-family: Georgia,serif; font-size: 2.5em; vertical-align: middle; line-height: 0; }
+  &:before { content: open-quote; margin-right: 4px; }
+  &:after { content: close-quote; margin-left: 3px; }
+  &.style1, &.style2 {
+    background: #fff; font-style: italic;
+    p { display: inline; }
+  }
+  &.style1 {
+    border-left: 3px solid $skin-select-color; position: relative;
+    > span.triangle:before { text-indent: 0; content: "\f0da"; font-family: FontAwesome; color: $skin-select-color; position: absolute; left: -1px; top: 50%; margin-top: -11px; font-style: normal; }
+    &:before, &:after { color: #f5f5f5; }
+    
+    &.border-color-blue {
+      border-color: $blue-theme-color;
+     > span.triangle:before { color: $blue-theme-color; }
+    }
+    &.border-color-yellow {
+      border-color: $yellow-theme-color;
+     > span.triangle:before { color: $yellow-theme-color; }
+    }
+    &.quote-color-blue {
+      &:before, &:after { color: $blue-theme-color; }
+    }
+    &.quote-color-yellow {
+      &:before, &:after { color: $yellow-theme-color; }
+    }
+  }
+  &.style2 {
+    color: $skin-active-color;
+    &:before, &:after { color: $skin-select-color; }
+  }
+}
+
+.selected-effect {
+  display: block; position: relative; background: none; overflow: hidden; background: $skin-active-color;
+  amp-img { @include opacity(0.5); }
+  &:after { position: absolute; color: #fff; background: none; content: "\e8ba"; font-family: "soap-icons"; font-size: 1.6667em; text-align: center; line-height: 50px; border: 2px solid #fff; @include border-radius(50%, 50%, 50%, 50%); width: 50px; height: 50px; left: 50%; top: 50%; margin-left: -25px; margin-top: -25px; }
+}
+
+.animated .hover-effect { z-index: 0; }
+
+/* 2.2.9. Social icons */
+.social-icons {
+  li {
+    float: left; text-align: center;
+    a {
+      width: 32px; margin-right: 4px; height: 32px; display: inline-block; background: #d9d9d9; color: #fff; line-height: 32px; font-size: 1.3333em; @include transition(opacity, 0.3s, ease-in);
+      &:hover { background: $skin-active-color; }
+    }
+    &:last-child { margin-right: 0; }
+  }
+  &.icon-circle a { @include border-radius(50%, 50%, 50%, 50%); overflow: hidden; }
+  &.style1 {
+    a:hover { background: $skin-active-color; }
+  }
+  &.style2 {
+    a { @include border-radius(50%, 50%, 50%, 50%); }
+  }
+  &.full-width {
+    display: block;
+    li { display: table-cell; float: none; width: 1%; margin: 0; text-align: center; }
+  }
+
+  // animation effect on hover
+  li { overflow: hidden; }
+  li:hover i { @include animation(toRightFromLeft, 0.3s, forwards, ""); display: block; }
+}
+
+/* 2.2.12. Time section */
+.time {
+  text-transform: uppercase; font-size: 0.8333em; line-height: 19px;
+  [class^="soap-icon"] { float: left; font-size: 18px; color: $skin-select-color; margin-right: 5px; }
+}
+
+.post-title {
+  margin-bottom: 0;
+}
+.post-meta { font-size: 0.8333em; text-transform: uppercase; }
+.sep { padding: 0 5px; }
+
+/* 2.4. Skin Color ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.title { color: $heading-color; }
+
+/* 2.7. Ordered lists ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+ol {  }
+
+/* 2.8. Toggle & Accordion ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.toggle-container {
+  background: #fff;
+  .panel {
+    margin-bottom: 0; box-shadow: none; @include border-radius(0, 0, 0, 0); border: none; border-bottom: 2px solid #f5f5f5; position: relative;
+    &:last-child { border: none; }
+    .panel-title {
+      padding: 0; color: $dark-blue-theme-color; font-size: 1.1667em; position: relative;
+      a { white-space: normal; display: block; padding: 15px; }
+    }
+    h1.panel-title { font-size: 2em; }
+    h2.panel-title { font-size: 1.6667em; }
+    h3.panel-title { font-size: 1.5em; }
+    h4.panel-title { font-size: 1.3333em; }
+    h5.panel-title { font-size: 1.1667em; }
+    h6.panel-title { font-size: 1em; }
+    /*.panel-content { font-size: 1.0833em; }*/
+    
+    /* 2.8.1. Style1 */
+    &.style1 {
+      .panel-title > a {
+        line-height: 24px;
+        &:before { display: block; content: "\f068"; font-family: FontAwesome; margin-right: 16px; line-height: 24px; font-size: 10px; float: left; width: 24px; height: 24px; text-align: center; color: #9e9e9e; background: #f5f5f5; @include border-radius(50%, 50%, 50%, 50%); }
+        &.collapsed:before { content: "\f067"; color: #fff; background: $skin-active-color; }
+      }
+      .panel-content { padding: 10px 15px 15px 55px; }
+      &.arrow-right {
+        .panel-title {
+          position: relative;
+          > a {
+            padding-right: 36px;
+            &:before { float: none; position: absolute; right: 0; height: 16px; line-height: 17px; width: 16px; font-size: 9px; border: none; margin-top: -8px; top: 50%; }
+          }
+        }
+        .panel-content { padding: 10px 15px; }
+      }
+    }
+    
+    /* 2.8.2. Style2 */
+   &.style2 {
+     .panel-title {
+       padding: 0;
+       > a {
+         display: block; line-height: normal; padding: 15px 20px; color: $skin-active-color;
+         &.collapsed { color: inherit; position: relative; &:hover { color: $skin-active-color; } }
+         &:after { content: "\f068"; font-family: FontAwesome; font-size: 10px; width: 30px; height: 30px; display: block; position: absolute; right: 15px; bottom: 0; color: #9e9e9e; background: #f5f5f5; text-align: center; line-height: 30px; }
+         &.collapsed:after { content: "\f067"; color: #fff; background: $skin-active-color; }
+       }
+     }
+     .panel-content { padding: 0 15px 30px 20px; }
+   }
+  }
+  
+  /* 2.8.3. Accordion with image */
+  &.with-image {
+   > .image-container {
+     background: $skin-bg-color;
+     > amp-img { width: 100%; height: auto; }
+   }
+   .panel > amp-img { display: none; }
+   .panel-title > a {
+      color: #01b7f2;
+      &.collapsed { color: inherit; &:hover { color: #01b7f2; } }
+    }
+  }
+}
+
+/* 2.11. Photo Gallery ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+.sidebar .image-box.style14 {
+  margin-bottom: 0;
+  .box {
+    padding-bottom: 15px; border-bottom: 1px solid #f5f5f5; margin-bottom: 15px;
+    &:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+  }
+}
+
+
+/* 2.17. Post ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.border-box { border: 15px solid #f5f5f5; }
+.post {
+  position: relative;
+  figure amp-img { width: 100%; height: auto; }
+  .entry-date {
+    background: $dark-blue-theme-color; padding: 7px 15px; color: #fff; text-align: center; text-transform: uppercase; position: absolute; left: 0; top: 10px;
+    .date { margin: 0; font-size: 1.6667em; display: block; font-weight: normal; }
+    .month { margin: 0; font-size: 0.8333em; font-weight: normal; }
+  }
+}
+.fluid-width-video-wrapper { padding: 0; position: relative; width: 100%; }
+
+.single {
+  .details { margin-bottom: 30px; }
+  .single-navigation {
+    a.button { font-weight: normal; }
+    a.button span { vertical-align: middle; }
+    i { font-size: 1.25em; font-weight: normal; line-height: 0; vertical-align: middle; }
+    .prev i { margin-right: 20px; }
+    .next i { margin-left: 20px; }
+  }
+}
+
+.about-author {
+  .about-author-container { background: #fff; padding: 0 20px; }
+  .about-author-content { display: table; border-bottom: 1px solid #f5f5f5; }
+  .avatar { display: table-cell; padding: 20px 20px 20px 0; border-right: 1px solid #f5f5f5; }
+  .description {
+    display: table-cell; padding: 20px; vertical-align: top;
+    p { line-height: 1.8333em; }
+  }
+  .about-author-meta { padding: 15px 0; }
+  .social-icons { float: right; }
+  .wrote-posts-count {
+    line-height: 28px; font-size: 1.1667em;
+    i { font-size: 1.8333em; color: $skin-bg-color; float: left; margin-right: 10px; }
+    span { vertical-align: middle; }
+  }
+}
+
+.single .avatar, .travel-story-container .avatar {
+  amp-img { @include border-radius(50%, 50%, 50%, 50%); width: 96px; height: 96px; }
+}
+
+.single .suggestions {
+  .caption { margin-bottom: 0; }
+  a.hover-effect:after { color: #fff; background: none; content: "\e8ba"; font-family: "soap-icons"; font-size: 1.6667em; text-align: center; line-height: 50px; border: 2px solid #fff; @include border-radius(50%, 50%, 50%, 50%); width: 50px; height: 50px; left: 50%; top: 50%; margin-left: -25px; margin-top: -25px; }
+  li { cursor: pointer; }
+  li:hover {
+    a.hover-effect:after { visibility: visible; @include transform(rotateY(0deg) scale(1,1)); @include opacity(1); }
+    a.hover-effect { background: $skin-bg-color; }
+    amp-img { @include opacity(0.5); @include transform(scale(1.2)); }
+    .caption { color: $skin-active-color; }
+  }
+}
+
+/* comment */
+.comment-list {
+  .the-comment {
+    padding-top: 20px; margin-top: 20px; border-top: 1px solid #f5f5f5;
+    .comment-text {
+      padding-right: 50px;
+      *:last-child { margin-bottom: 0; }
+    }
+  }
+  > li.comment:first-child > .the-comment { padding-top: 0; margin-top: 0; border-top: none; }
+  .avatar {
+    margin-right: 30px; float: left;
+    amp-img { width: 72px; height: 72px; }
+  }
+  ul.children { padding-left: 50px; }
+}
+
+/* 2.18. Testimonial ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.author {
+  a { display: inline-block; @include border-radius(50%, 50%, 50%, 50%); overflow: hidden; margin-left: 1px; }
+  amp-img { -webkit-backface-visibility: visible; }
+}
+
+/* 2.20. Gallery popup ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.opacity-overlay {
+  outline: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.75); z-index: 10000; display: none; -webkit-backface-visibility: hidden;
+  .container { height: 100%; position: relative; z-index: 10001; }
+  .spinner { color: #fff; font-size: 32px; position: absolute; left: 50%; top: 50%; margin-left: -16px; margin-top: -16px; }
+}
+
+/* 2.22. Animated effect ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.animated { visibility: hidden; }
+.no-cssanimations .animated, body.is-mobile .animated { visibility: visible; }
+
+/* 3. Header ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* 3.1. Main Header ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#header {
+  position: relative; z-index: 999;
+  .topnav { 
+    height: 30px; background: $skin-bg-color; width: 100%;
+    ul.quick-menu > li { 
+      float: left; margin-left: 20px; 
+      &:first-child { margin-left: 0; }
+      > a { color: #fff; line-height: 30px; display: block; font-size: 0.8333em; text-transform: uppercase; }
+    }
+  }
+  .ribbon { 
+    position: relative;
+    > a {
+      position: relative; padding: 0 10px 0 0; text-transform: uppercase;
+      &:after { display: inline-block; position: absolute; right: 0; /*top: 0; */content: "\f0d7"; font-family: FontAwesome; color: #fff; }
+    }
+    &:hover > ul.menu { top: 28px; visibility: visible; @include opacity(1); }
+    > ul.menu { position: absolute; left: -15px; top: -9999px; z-index: 99; visibility: hidden; }
+    > ul.menu.left { left: auto; right: -10px; }
+    &.currency > ul.menu li a { text-transform: uppercase; font-size: 0.8333em; }
+  }
+  
+  .main-header { height: auto; position: relative; width: 100%; }
+  /* Logo */
+  .logo {
+    padding: 0; text-align: left; margin: 10px 0 0; height: auto;
+    a { display: block; }
+  }
+  
+  /* 3.1.1. Mobile navigation */
+  .mobile-menu-toggle {
+    background: url(../images/icon/mobile-menu.png) no-repeat center center $skin-bg-color; padding: 0; margin: 0; height: 66px; width: 66px; padding: 22px; position: absolute; right: 0; top: 0; bottom: 0; text-indent: -9999px; display: none;
+    .icon-bar { background: white; }
+  }
+
+  /* 3.1.2. Header Styles */
+  &.style1 {
+    background: $skin-bg-color; padding-top: 30px;
+    * { color: #fff; }
+    .logo {
+      margin: 0; float: none; position: absolute; left: 50%; margin-left: -77px; top: 32px;
+      a {
+        width: 155px; position: relative;/* background: none;*/
+        &:after { position: absolute; display: block; width: 130px; height: 30px; background: url("../images/logo_txt.png") no-repeat $skin-bg-color; content: ""; top: 0; right: 0; }
+      }
+      amp-img { @include opacity(1); }
+    }
+    .social-icons{
+      float: right;
+      li {
+        a {
+          background: none; border: 1px solid transparent; overflow: hidden;
+          &:hover {
+            border: 1px solid $skin-hover-color;
+            i { display: block; @include animation(toBottomFromTop, 0.3s, forwards); }
+          }
+        }
+      }
+    }
+    
+    /* Main menu */
+    #main-menu {
+      border-top: 1px solid $skin-hover-color;
+      ul.menu {
+        margin: 0 auto; float: none;
+        > li {
+          padding-left: 0; padding-right: 0px; margin-right: 15px;
+          > a { padding-left: 20px; padding-right: 20px; height: 50px; line-height: 50px; font-weight: bold; }
+          &.active > a, &:hover > a { color: #fff; background: $skin-hover-color; }
+          &:hover > ul, &:hover > .megamenu-wrapper { top: 47px; }
+        }
+      }
+    }
+  }
+}
+
+#header, #footer, .chaser {
+  .logo {
+    a { background: url($skin-logo) no-repeat 0 0; display: block; }
+    amp-img { @include opacity(0); }
+  }
+}
+
+/*  3.1.3. Navigation */
+.menu {
+  > li { position: relative; }
+}
+
+
+#main-menu ul.menu, .chaser ul.menu {
+  margin: 0; float: right;
+  li { -webkit-backface-visibility: hidden; -webkit-transform: none ; }
+  /* 1st level */
+  > li {
+    float: left; padding-left: 20px; padding-right: 20px;
+    &:first-child { padding-left: 0; }
+    &:last-child { padding-right: 0; }
+    &:hover > ul { top: 66px; visibility: visible; height: auto ; @include opacity(1); z-index: 1000; }
+    > a { font-weight: normal; display: block; padding: 0; height: 68px; line-height: 68px; text-transform: uppercase; letter-spacing: 0.04em; }
+    &.active > a { color: $skin-active-color; font-weight: bold; }
+    &:hover > a { color: $skin-active-color; }
+  }
+  
+  /* 2nd level */
+  // default
+  > li > ul {
+    &.left { left: auto; right: -10px; }
+  }
+  > li {
+    ul {
+      visibility: hidden; position: absolute; left: 0px; top: -9999px; z-index: -1; width: 180px; padding: 0; background: $skin-bg-color;
+      li {
+        text-align: left; position: relative;
+        &:first-child { border-top: none; }
+        &:hover > ul { top: 0; display: block; visibility: visible; @include opacity(1); z-index: 1000; } 
+        > a { border-top: 1px solid $skin-mobile-menu-color; white-space: nowrap; color: #fff; padding: 12px 20px 12px 18px; display: block; font-size: 0.9167em; @include opacity(0.7); }
+        &:hover > a, &.active > a { background: $skin-mobile-menu-color; @include opacity(1); }
+      }
+    }
+  }
+  
+  /* 3rd level */
+  > li li > ul {
+    left: 180px;
+    &.left { left: -180px; }
+  }
+}
+
+/* 3.1.7. Mini Menu */
+ul.menu.mini {
+  min-width: 180px; border: 2px solid $skin-bg-color; background: #fff;
+  li {
+    padding: 0 20px; float: none; margin: 0;
+    a { border-bottom: 1px solid #f5f5f5; display: block; padding: 10px 0; color: inherit; line-height: normal; font-size: 0.9167em; text-align: left; }
+    &:hover, &.active {
+      background: #f5f5f5;
+      a { color: $skin-active-color; font-weight: bold; }
+    }
+  }
+}
+
+/* 3.1.8. Mobile Menu */
+
+.mobile-menu {
+  li {
+    list-style-type: none;
+    margin: 0;
+  }
+  .close-sidebar {
+    padding: 15px 10px;
+  }
+  background: $skin-bg-color; text-align: left;
+  a { color: #fff; @include opacity(0.7); display: block; padding: 15px; background: none ; }
+  li.active > a, li:hover > a { @include opacity(1); }
+  > ul.menu {
+    // 1st level
+    > li {
+      float: none; padding-left: 15px; padding-right: 15px;
+      > a { font-size: 1.1667em; border-top: 1px solid $skin-mobile-menu-color; }
+      > a { text-transform: uppercase; font-weight: bold; }
+      &.menu-item-has-children {
+        position: relative;
+        &.open { background: $skin-mobile-menu-color; }
+        & > .dropdown-toggle {
+          position: absolute; right: 1px; top: 7px; height: 34px; line-height: 34px; padding: 0 15px; background: none; display: inline-block; font-family: FontAwesome; font-size: 1.3333em; font-weight: normal; @include opacity(0.7);
+          &:after { content: "\f056"; }
+          &.collapsed:after { content: "\f055"; }
+        }
+        //> a { border-top: 1px solid $skin-mobile-menu-color; }
+        &.open {
+          > a { color: #fff; /*border-top-color: $skin-bg-color;*/ @include opacity(1); }
+          > .dropdown-toggle { @include opacity(1); }
+        }
+        &:hover {
+          > a, > .dropdown-toggle { @include opacity(1); }
+        }
+        > ul { border-top: 1px solid $skin-bg-color; }
+      }
+      &:first-child > a { border-top: none; }
+      &:last-child > a { border-bottom: 1px solid $skin-mobile-menu-color; }
+    }
+
+    // 2nd+ level
+    > li > ul {
+      /*background: $skin-mobile-menu-color;*/
+      li {
+        > a {
+          padding-left: 15px; font-size: 1.0833em; position: relative;
+          &:before { font-family: FontAwesome; content: "\f111"; display: block; font-size: 4px; position: absolute; left: 0px; }
+        }
+        &.menu-item-has-children {
+          > a {
+            padding-left: 0; color: #fff; @include opacity(1); font-size: 1.1667em; font-weight: bold; text-transform: uppercase;
+            &:before { content: ""; display: none; }
+          }
+          > ul { border-bottom: 1px solid $skin-bg-color; }
+          &:last-child > ul { border-bottom: none ; }
+        }
+      }
+    }
+
+    //3rd level
+    > li li li {
+      &.menu-item-has-children > a {
+        padding-left: 10px;
+        &:before { display: none; }
+      }
+    }
+  }
+
+  .mobile-topnav {
+    margin: 0 auto; padding: 0 5px;
+    > li {
+      float: left; position: relative; color: $skin-hover-color;
+      > a {
+        font-size: 0.8333em; padding: 0 10px; margin: 22px 10px; line-height: 1em; width: auto;
+      }
+      &:after { content: "|"; position: absolute; right: -1px; top: 50%; margin-top: -10px;}
+      &:last-child:after { display: none; }
+      &:first-child a { margin-left: 0; }
+    }
+
+    .menu.mini {
+      left: 0; top: 40px; visibility: visible; display: none; min-width: 100px;
+      li > a { padding: 10px 0; }
+      &.left { left: 0; right: auto; }
+    }
+  }
+}
+
+/* 3.1.9. Sticky Header */
+.chaser {
+  /*background: rgba(red($skin-bg-color), green($skin-bg-color), blue($skin-bg-color), 0.8); left: 0; padding: 0; position: fixed; right: 0; top: 0; width: 100%; z-index: 9999;*/
+  background: rgba(255, 255, 255, 0.95); position: fixed; right: 0; top: 0; width: 100%; z-index: 999; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); -webkit-backface-visibility: hidden;
+  ul.menu {
+    > li { 
+      > a { line-height: 48px; height: 48px; }
+      &:hover > ul, &:hover > .megamenu-wrapper { top: 46px ; }
+    }
+  }
+  .logo {
+    margin-top: 14px; min-height: initial; padding: 0; height: auto; margin-bottom: 0;
+    amp-img { height: 20px; }
+    a { background-size: auto 20px; }
+  }
+}
+.no-rgba .chaser { background: #fff; @include opacity(0.95); }
+.no-backgroundsize .chaser .logo a {
+  background-size: auto 20px; background-image: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$skin-logo}', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$skin-logo}', sizingMethod='scale')";
+}
+
+/* 8. Footer ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#footer {
+  .footer-wrapper {
+    padding: 80px 0;
+    > .container > .row > div { margin-top: 20px; }
+  }
+  .discover li { line-height: 2.6667em; font-size: 1.0833em; }
+  h2 { margin-bottom: 20px; }
+
+  .bottom {
+    height: 60px;
+    .logo { margin: 18px 0 0; }
+    .copyright { font-size: 1.0833em; margin: 23px 20px 0; }
+    #back-to-top {
+      margin-top: 20px; display: block; font-size: 16px; color: $heading-color;
+      i { border-color: $skin-bg-color; font-weight: bold; overflow: hidden; }
+      &:hover > i:before { @include animation(toTopFromBottom, 0.3s, forwards); display: inline-block; }
+    }
+  }
+
+  /* menu position */
+  #main-menu .menu > li.menu-item-has-children {
+    > ul, > .megamenu-wrapper { top: auto; bottom: 66px; }
+  }
+}
+
+/* 9.1.5. Mobile Section */
+.mobile-section {
+  .table-wrapper { table-layout: fixed; width: 100%; }
+  .description { vertical-align: middle; }
+  .image-wrapper { vertical-align: bottom; padding-top: 50px; amp-img { max-width: 100%; } }
+}
+
